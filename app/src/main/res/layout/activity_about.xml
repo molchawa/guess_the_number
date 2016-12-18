@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/rules_title"
+        android:id="@+id/rulesTitleTextView" />
+    <ScrollView android:id="@+id/textAreaScroller"
+        android:layout_below="@+id/rulesTitleTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:scrollbars="vertical">
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_below="@+id/rulesTitleTextView"
+        android:layout_height="wrap_content"
+        android:text="@string/rules"
+        android:id="@+id/rulesTextView"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+    </ScrollView>
+</RelativeLayout>

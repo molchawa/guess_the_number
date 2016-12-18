@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+android:orientation="vertical"
+android:layout_width="fill_parent"
+android:layout_height="fill_parent"
+android:padding="15dp">
+
+
+<TextView
+android:id="@+id/dialogNicksTextView"
+android:layout_width="fill_parent"
+android:layout_height="wrap_content"
+android:textAppearance="?android:attr/textAppearanceLarge"
+android:text="@string/dialogNicksText"/>
+
+<EditText
+android:layout_width="wrap_content"
+android:layout_height="wrap_content"
+android:id="@+id/nickEditText"
+android:layout_below="@+id/dialogNicksTextView"
+    android:hint="@string/giveANickText"
+android:layout_alignParentLeft="true"
+android:layout_alignParentStart="true" />
+
+<Button
+    android:id="@+id/dialogButtonNicksADD"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="@string/dialogNicksAdd"
+    android:layout_marginTop="5dp"
+    android:layout_below="@+id/nickEditText"
+    android:layout_centerHorizontal="true"/>
+
+
+
+</RelativeLayout>

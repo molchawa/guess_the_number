@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="@string/intervalTitle"
+        android:id="@+id/intervalTextView" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/minEditText"
+        android:hint="@string/minDesc"
+        android:layout_alignParentLeft="true"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:inputType="numberDecimal"
+        android:digits="1234567890"
+        android:layout_below="@+id/intervalTextView"
+        android:width="165dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/minTitle"
+        android:id="@+id/minTextView"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/minEditText"/>
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/maxEditText"
+        android:hint="@string/maxDesc"
+        android:layout_below="@+id/intervalTextView"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:inputType="numberDecimal"
+        android:digits="1234567890"
+        android:layout_alignParentRight="true"
+        android:width="165dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/maxTitle"
+        android:id="@+id/maxTextView"
+        android:layout_below="@+id/maxEditText"
+        android:layout_alignStart="@+id/maxEditText" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/startGame"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/startPlayButton"
+        android:layout_below="@+id/maxTextView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="testowy"
+        android:id="@+id/roundTextView"
+        android:layout_below="@+id/startPlayButton"
+        android:layout_marginTop="100dp"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:hint="@string/getNumberHint"
+        android:id="@+id/getNumberEditText"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/roundTextView"
+        android:layout_centerHorizontal="true"
+        android:width="110dp"/>
+
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/checkNumberButton"
+        android:id="@+id/checkButton"
+        android:layout_below="@+id/getNumberEditText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp" />
+
+</RelativeLayout>

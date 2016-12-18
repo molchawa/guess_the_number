@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:text="@string/results"
+        android:textAlignment="center"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <TableLayout
+        android:id="@+id/resultTable"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/resultTextView"
+        android:layout_marginTop="20dp"
+        android:padding="30dp"
+        android:stretchColumns="1">
+
+        <TableRow>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            <TextView
+                android:textAlignment="center"
+                android:padding="3dp"
+                android:text="Miejsce" />
+
+            <TextView
+                android:textAlignment="center"
+                android:padding="3dp"
+                android:text="Nick" />
+
+            <TextView
+                android:textAlignment="center"
+                android:padding="3dp"
+                android:text="Liczba prób" />
+        </TableRow>
+
+
+    </TableLayout>
+
+</RelativeLayout>

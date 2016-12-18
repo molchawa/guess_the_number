@@ -1,0 +1,59 @@
+<resources>
+    <string name="app_name">Jaka to liczba?</string>
+
+    <string name="hello">Witaj w grze :)</string>
+    <string name="playMenu">NOWA GRA</string>
+    <string name="optionsMenu">USTAWIENIA</string>
+    <string name="rulesMenu">ZASADY GRY</string>
+    <string name="exitMenu">WYJŚCIE</string>
+
+    <string name="range_label">Zakres</string>
+    <string name="range">Podaj zakres procentowy (0-100%)</string>
+    <string name="mode">Wybierz tryb gry</string>
+    <string name="individual">dla każdego inna liczba</string>
+    <string name="common">dla wszystkich wspólna liczba</string>
+    <string name="rules_title">Zasady gry</string>
+    <string name="rules">Rozgrywka polega na zgadywaniu liczby wylosowanej z podanego przedziału.
+    Minimum przedziału nie powinno być mniejsze niż 1, natomiast maksimum - większe niż 10 000.
+    Wygrywa ten, kto pierwszy zgadnie liczbę.\n\nDostępne są dwa tryby:\n
+    - pierwszy: dla każdego gracza losowana jest inna liczba;\n
+    - drugi:losowana jest jedna liczba, wspólna dla wszystkich.\n
+    \nTryb można wybrać w \"Opcjach\".\n\n
+    "Zakres" jest to procent z maksimum przedziału.\n Jeśli podana przez Ciebie liczba będzie odbiegać od wylosowanej o +/-
+    tej wartosci,\n wówczas zobaczysz komunikat, czy podana przez Ciebie liczba jest mniejsza/większa od wylosowanej.\n\n
+    \nGra przewiduje max. 4 graczy. Kolejność zgadywania jest losowa.\n\n
+    Życzę przyjemnej gry :) !</string>
+    <string name="range_label_description">Podaj dla +/- jakiego procenta maksimum przedziału mają być wyświetlane powiadomienia</string>
+    <string name="min_range_label">0%</string>
+    <string name="mid_range_label">50%</string>
+    <string name="max_range_label">100%</string>
+    <string name="result">Wybrany zakres: 50% </string>
+
+    <string name="noOfPlayersTitle">Liczba graczy </string>
+    <string name="onePlayer">jeden </string>
+    <string name="twoPlayers">dwóch </string>
+    <string name="threePlayers">trzech</string>
+    <string name="fourPlayers">czterech </string>
+    <string name="playersOkButtonText">Gotowe !!! </string>
+    <string name="dialogNicksText">testowy </string>
+    <string name="dialogNicksAdd">Dodaj </string>
+    <string name="giveANickText">Podaj nick... </string>
+
+    <string name="minDesc">Co najmniej 1 </string>
+    <string name="minTitle">Minimum </string>
+    <string name="maxDesc">Nie więcej niż 1 000 000 </string>
+    <string name="maxTitle">Maksimum </string>
+    <string name="intervalTitle">Przedział losowania liczb </string>
+
+    <string name="getNumberHint">Podaj liczbę</string>
+
+    <string name="checkNumberButton">Sprawdź</string>
+
+    <string name="startGame">Rozpocznij grę !</string>
+
+    <string name="results">Wyniki</string>
+
+
+
+
+</resources>

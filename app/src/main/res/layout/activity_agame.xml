@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/noOfPlayersTitle"
+        android:id="@+id/numbersOfPlayersTitleTextView"
+        android:layout_marginTop="15dp"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/numbersOfPlayersTitleTextView"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:id="@+id/radioGroupNoOfPlayers">
+        <RadioButton android:id="@+id/radio_onePlayer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/onePlayer"/>
+        <RadioButton android:id="@+id/radio_twoPlayers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/twoPlayers"
+            android:checked="true"/>
+        <RadioButton android:id="@+id/radio_threePlayers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/threePlayers"/>
+        <RadioButton android:id="@+id/radio_fourPlayers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/fourPlayers" />
+
+    </RadioGroup>
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/playersOkButtonText"
+        android:id="@+id/playersOkButton"
+        android:layout_below="@+id/radioGroupNoOfPlayers"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

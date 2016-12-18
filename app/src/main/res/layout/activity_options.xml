@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/range_label"
+        android:id="@+id/rangeTextView" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_below="@+id/rangeTextView"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/range_label_description"
+        android:id="@+id/rangeDescriptionTextView" />
+    <SeekBar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rangeDescriptionTextView"
+        android:id="@+id/rangeSeekBar"
+        android:layout_marginTop="15dp"
+        android:max="100" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rangeSeekBar"
+        android:layout_alignParentLeft="true"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/min_range_label"
+        android:id="@+id/minRangeTextView" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rangeSeekBar"
+        android:layout_alignParentRight="true"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/max_range_label"
+        android:id="@+id/maxRangeTextView" />
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/rangeSeekBar"
+        android:layout_centerHorizontal="true"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="@string/mid_range_label"
+        android:id="@+id/midRangeTextView" />
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/minRangeTextView"
+        android:paddingTop="20dp"
+        android:text="@string/result" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/resultTextView"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="@string/mode"
+        android:id="@+id/modeTextView"
+        android:layout_marginTop="15dp"/>
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/modeTextView"
+        android:layout_margin="10dp"
+        android:orientation="vertical"
+        android:id="@+id/radioGroupModes">
+        <RadioButton android:id="@+id/radio_individual"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/individual"/>
+        <RadioButton android:id="@+id/radio_common"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/common" />
+
+    </RadioGroup>
+
+
+</RelativeLayout>
