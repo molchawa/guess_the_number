@@ -1,7 +1,7 @@
 <resources>
     <string name="app_name">Jaka to liczba?</string>
 
-    <string name="hello">Witaj w grze :)</string>
+    <string name="hello_first_inscription">Witaj w grze :)</string>
     <string name="playMenu">NOWA GRA</string>
     <string name="optionsMenu">USTAWIENIA</string>
     <string name="rulesMenu">ZASADY GRY</string>
@@ -34,7 +34,7 @@
     <string name="twoPlayers">dwóch </string>
     <string name="threePlayers">trzech</string>
     <string name="fourPlayers">czterech </string>
-    <string name="playersOkButtonText">Gotowe !!! </string>
+    <string name="playersOkButtonText">Gotowe ! </string>
     <string name="dialogNicksText">testowy </string>
     <string name="dialogNicksAdd">Dodaj </string>
     <string name="giveANickText">Podaj nick... </string>
@@ -52,8 +52,5 @@
     <string name="startGame">Rozpocznij grę !</string>
 
     <string name="results">Wyniki</string>
-
-
-
 
 </resources>

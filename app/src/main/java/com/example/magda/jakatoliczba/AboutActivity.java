@@ -10,6 +10,6 @@ public class AboutActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-
+        //nothing interesting here, but the content is in layout resource- TO DO ! change game rules
     }
 }

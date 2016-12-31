@@ -8,7 +8,7 @@
         android:id="@+id/resultTextView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="20dp"
         android:text="@string/results"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
@@ -19,27 +19,28 @@
         android:layout_height="match_parent"
         android:layout_below="@+id/resultTextView"
         android:layout_marginTop="20dp"
-        android:padding="30dp"
-        android:stretchColumns="1">
+        android:padding="15dp"
+        android:stretchColumns="*">
 
         <TableRow>
-            android:layout_width="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
             android:layout_height="match_parent"
 
             <TextView
                 android:textAlignment="center"
-                android:padding="3dp"
-                android:text="Miejsce" />
+                android:text="Miejsce"
+                android:width="1dp"/>
 
             <TextView
                 android:textAlignment="center"
-                android:padding="3dp"
-                android:text="Nick" />
+                android:text="Nick"
+                android:width="1dp"/>
 
             <TextView
                 android:textAlignment="center"
-                android:padding="3dp"
-                android:text="Liczba prób" />
+                android:text="Liczba prób"
+                android:width="1dp" />
         </TableRow>
 
 

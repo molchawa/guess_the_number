@@ -11,8 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-
-
 import java.util.ArrayList;
 
 /**
@@ -20,116 +18,86 @@ import java.util.ArrayList;
  */
 public class AGameActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
 
-    final Context context = this;
-
-    int noOfPlayers = 2;
-    RadioGroup radioGroupNoOfPlayers;
-    Button playersOkButton;
-    ArrayList<Player> listOfPlayers;
-    int currentPlayer;
-
-
+    private final Context context = this;
+    private int noOfPlayers = 2;
+    private RadioGroup radioGroupNoOfPlayers;
+    private Button playersOkButton;
+    private ArrayList<Player> listOfPlayers;
+    private int currentPlayer;
     private static final String TAG = "AGameActivity";
 
     public void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agame);
 
-        currentPlayer = 1;
+        currentPlayer = 1;//sth like counter for players
+
         radioGroupNoOfPlayers = (RadioGroup) findViewById(R.id.radioGroupNoOfPlayers);
-        radioGroupNoOfPlayers.setOnCheckedChangeListener(this);
+        radioGroupNoOfPlayers.setOnCheckedChangeListener(this);//to choose from 1 to 4 players; this function is overridden above
 
+        //confirming after choosing amount of players
         playersOkButton = (Button) findViewById(R.id.playersOkButton);
-
         playersOkButton.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
+                //custom dialog window for getting nicks
                 final Dialog dialogForNicks = new Dialog(context);
                 listOfPlayers = new ArrayList<Player>();
                 dialogForNicks.setContentView(R.layout.custom_dialog_nicks);
-                //dialogForNicks.setTitle("Title...");
-
-                // set the custom dialog components - text, image and button
+                //dialogForNicks.setTitle("Title...");  - it doesn't work
                 final TextView textForNicks = (TextView) dialogForNicks.findViewById(R.id.dialogNicksTextView);
                 final EditText editTextToGetNick = (EditText) dialogForNicks.findViewById(R.id.nickEditText);
-                //text.setText("Android custom dialog example!");
-
                 final Button dialogButtonNicksAdd = (Button) dialogForNicks.findViewById(R.id.dialogButtonNicksADD);
-                // if button is clicked, close the custom dialog
 
                 textForNicks.setText("Nick " + currentPlayer + ".z graczy");
                 dialogForNicks.show();
+
+                //confirming each nick
                 dialogButtonNicksAdd.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Player tempPlayer=new Player();
-                        boolean nickIsRepeated=false;
-
+                        Player tempPlayer = new Player();//temporary item to check whether nick is repeated
+                        boolean nickIsRepeated = false;
                         tempPlayer.setNick(editTextToGetNick.getText().toString());
 
-
-                                for(int k=0;k<listOfPlayers.size();k++){
-
-                                    if(tempPlayer.getNick().equals(listOfPlayers.get(k).getNick())){
-                                        Log.d(TAG,"niestety powtórzono nicka");
-                                        nickIsRepeated=true;
-
-                                    }
-                                }
-
-                        if(!nickIsRepeated){
+                        //checking whether nick is repeated
+                        for (int k = 0; k < listOfPlayers.size(); k++) {
+                            if (tempPlayer.getNick().equals(listOfPlayers.get(k).getNick())) {
+                                Log.d(TAG, "niestety powtórzono nicka");
+                                nickIsRepeated = true;
+                            }
+                        }
+                        //if not we can add it to list of players
+                        if (!nickIsRepeated) {
                             listOfPlayers.add(tempPlayer);
                             currentPlayer++;
                         }
 
-
-                        if(currentPlayer==noOfPlayers){
+                        //while adding last nick we can display different button
+                        if (currentPlayer == noOfPlayers) {
                             dialogButtonNicksAdd.setText("Zakończ");
                         }
-                        if(currentPlayer > noOfPlayers) {
 
+                        //if we gather all nicks we can close  the dialog window and start new activity
+                        if (currentPlayer > noOfPlayers) {
                             dialogForNicks.dismiss();
-
-
-                            Intent i = new Intent(AGameActivity.this,BGameActivity.class);
-                            i.putExtra("listOfPlayers",listOfPlayers);
+                            Intent i = new Intent(AGameActivity.this, BGameActivity.class);
+                            i.putExtra("listOfPlayers", listOfPlayers);
                             i.putExtra("numberOfPlayers", noOfPlayers);
                             startActivity(i);
                         }
+
+                        //here is setting new text for dialog window (according to player whose nick is picking up
                         textForNicks.setText("Nick " + currentPlayer + ".z graczy");
                         editTextToGetNick.setText("");
-
-
-
                     }
                 });
-
-
             }
-
         });
-
-
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-
     }
 
     @Override
     public void onCheckedChanged(RadioGroup radioGroup, int i) {
-
         switch (i) {
             case R.id.radio_onePlayer:
                 noOfPlayers = 1;
@@ -140,7 +108,6 @@ public class AGameActivity extends AppCompatActivity implements RadioGroup.OnChe
             case R.id.radio_threePlayers:
                 noOfPlayers = 3;
                 break;
-
             case R.id.radio_fourPlayers:
                 noOfPlayers = 4;
                 break;

@@ -13,14 +13,14 @@ public class Player implements Serializable {
     private int tempNumber;
     private boolean numberIsGuessed;
 
-    public Player(){
-        nick="";
-        numberOfTrials=0;
-        number=0;
-        tempNumber=0;
-        score=0;
+    //class player describe each player
+    public Player() {
+        nick = "";
+        numberOfTrials = 0;//temporary score
+        number = 0;
+        tempNumber = 0;
+        score = 0;
         setNumberIsGuessed(false);
-
     }
 
     public String getNick() {
@@ -62,8 +62,6 @@ public class Player implements Serializable {
     public void setNumberIsGuessed(boolean numberIsGuessed) {
         this.numberIsGuessed = numberIsGuessed;
     }
-
-
 
     public int getScore() {
         return score;

@@ -72,7 +72,8 @@
         android:layout_below="@+id/startPlayButton"
         android:layout_marginTop="100dp"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -84,7 +85,8 @@
         android:layout_marginTop="30dp"
         android:layout_below="@+id/roundTextView"
         android:layout_centerHorizontal="true"
-        android:width="110dp"/>
+        android:width="110dp"
+        android:visibility="invisible"/>
 
 
     <Button
@@ -95,6 +97,7 @@
         android:id="@+id/checkButton"
         android:layout_below="@+id/getNumberEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"
+        android:visibility="invisible" />
 
 </RelativeLayout>

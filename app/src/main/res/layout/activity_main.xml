@@ -48,7 +48,7 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="@string/hello"
+        android:text="@string/hello_first_inscription"
         android:id="@+id/helloTextView"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
