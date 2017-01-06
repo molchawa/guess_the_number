@@ -1,11 +1,13 @@
 package com.example.magda.jakatoliczba;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -29,7 +31,7 @@ public class BGameActivity extends AppCompatActivity {
     public static final String MY_PREFERENCES = "MyPrefs";
     private static final String TAG = "BGameActivityLogi";
     private SharedPreferences sharedOptionsPreferences;
-    //variables to control gettin numbers from users
+    //variables to control getting numbers from users
     private int currentPlayer;
     private int currentRound;
     private int finish;
@@ -50,25 +52,56 @@ public class BGameActivity extends AppCompatActivity {
 
         //it's time to start the game
         startPlayButton = (Button) findViewById(R.id.startPlayButton);
+
         startPlayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //getting range from which the number will be generated
-                EditText minimumEditText = (EditText) findViewById(R.id.minEditText);
-                minimum = Integer.parseInt(minimumEditText.getText().toString());
-                EditText maximumEditText = (EditText) findViewById(R.id.maxEditText);
-                maximum = Integer.parseInt(maximumEditText.getText().toString());
 
-                //sorting list of players in generated order
-                listOfPlayers = sortingPlayers(listOfPlayers, noOfPlayers);
-                //generating a number to be guessed
-                numberRandomization(listOfPlayers, noOfPlayers, mode, minimum, maximum);
-
-                for (int i = 0; i < noOfPlayers; i++) {
-                    Log.d(TAG, "Gracz " + (i + 1) + " " + listOfPlayers.get(i).getNumber());
+                View view = getCurrentFocus();
+                if (view != null) {
+                    InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
                 }
 
-                play(noOfPlayers,mode,listOfPlayers);
+                //getting range from which the number will be generated
+                EditText minimumEditText = (EditText) findViewById(R.id.minEditText);
+                boolean editTextProblem=false;
+                minimum = Integer.parseInt(minimumEditText.getText().toString());
+                if(minimum<0){
+                    MessagesManager.getToast(getApplicationContext(),1, getString(R.string.tooLowMinimumToast)).show();
+                    editTextProblem=true;
+                }
+
+                EditText maximumEditText = (EditText) findViewById(R.id.maxEditText);
+                maximum = Integer.parseInt(maximumEditText.getText().toString());
+                if(maximum>10000){
+                    MessagesManager.getToast(getApplicationContext(),1, getString(R.string.tooHighMaximumToast)).show();
+                    editTextProblem=true;
+                }
+
+                if(maximum<=minimum){
+                    MessagesManager.getToast(getApplicationContext(),1, getString(R.string.wrongDifferenceToast)).show();
+                    editTextProblem=true;
+                }
+
+                if(maximum-minimum<100){
+                    MessagesManager.getToast(getApplicationContext(),1, getString(R.string.tooSmallDifferenceToast)).show();
+                    editTextProblem=true;
+                }
+
+                if(editTextProblem==false) {
+                    //sorting list of players in generated order
+                    listOfPlayers = sortingPlayers(listOfPlayers, noOfPlayers);
+                    //generating a number to be guessed
+                    numberRandomization(listOfPlayers, noOfPlayers, mode, minimum, maximum);
+
+                    for (int i = 0; i < noOfPlayers; i++) {
+                        Log.d(TAG, "Gracz " + (i + 1) + " " + listOfPlayers.get(i).getNumber());
+                    }
+
+                    play(noOfPlayers, mode, listOfPlayers);
+                }
+
             }
         });
     }
@@ -112,7 +145,15 @@ public class BGameActivity extends AppCompatActivity {
 
     public void play(int amount, int m, final ArrayList<Player> list) {
         final TextView roundTextView = (TextView) findViewById(R.id.roundTextView);
-        final EditText getNumberEditText = (EditText) findViewById(R.id.getNumberEditText);
+        EditText tempGetNumberEditText=null;
+        if(m==1){
+            tempGetNumberEditText = (EditText) findViewById(R.id.getNumberEditText);
+        }
+        else if(m==2){
+            tempGetNumberEditText = (EditText) findViewById(R.id.getNumberPasswordEditText);
+        }
+        final EditText getNumberEditText=tempGetNumberEditText;
+
         final int a=amount;
         currentPlayer=0;
         currentRound=1;
@@ -158,6 +199,7 @@ public class BGameActivity extends AppCompatActivity {
                 //if not - we have to change request
                 if(finish<a){
                     roundTextView.setText("Runda: " + currentRound + " , gracz: " + listOfPlayers.get(currentPlayer).getNick());
+                    getNumberEditText.setText("");
                 }
             }
         });
@@ -166,16 +208,16 @@ public class BGameActivity extends AppCompatActivity {
         player.setNumberOfTrials(r);
         if (player.getNumber() == player.getTempNumber()) {
             player.setNumberIsGuessed(true);
-            Log.d(TAG, "Zgadłeś :)");
+            MessagesManager.getToast(getApplicationContext(),1, getString(R.string.numberGuessedToast)).show();
             return true;
         }
         else {
             if ((player.getTempNumber() >= (player.getNumber() - difference)) && (player.getTempNumber() < player.getNumber())) {
-                Log.d(TAG, "Liczba mniejsza od wylosowanej");
+                MessagesManager.getToast(getApplicationContext(),1, getString(R.string.numberTooSmallToast)).show();
             } else if ((player.getTempNumber() <= (player.getNumber() + difference)) && (player.getTempNumber() > player.getNumber())) {
-                Log.d(TAG, "Liczba większa od wylosowanej");
+                MessagesManager.getToast(getApplicationContext(),1, getString(R.string.numberTooBigToast)).show();
             } else {
-                Log.d(TAG, "Niestety, nie udało się");
+                MessagesManager.getToast(getApplicationContext(),1, getString(R.string.numberWrongToast)).show();
             }
             return false;
         }

@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.view.Gravity;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -43,13 +44,16 @@ public class ResultActivity extends AppCompatActivity {
             TableRow.LayoutParams lp = new TableRow.LayoutParams(TableRow.LayoutParams.WRAP_CONTENT);
             row.setLayoutParams(lp);
             TextView place = new TextView(this);
+            place.setGravity(Gravity.CENTER);
             place.setText("" + (i + 1) + ".");
             row.addView(place);
             TextView nick = new TextView(this);
             nick.setText(listOfPlayers.get(i).getNick());
+            nick.setGravity(Gravity.CENTER);
             row.addView(nick);
             TextView trials = new TextView(this);
             trials.setText("" + listOfPlayers.get(i).getNumberOfTrials());
+            trials.setGravity(Gravity.CENTER);
             row.addView(trials);
             result.addView(row, i + 1);
         }

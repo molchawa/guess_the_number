@@ -1,17 +1,26 @@
 <resources>
+    <!-- General -->
     <string name="app_name">Jaka to liczba?</string>
 
+    <!-- MainActivity -->
     <string name="hello_first_inscription">Witaj w grze :)</string>
     <string name="playMenu">NOWA GRA</string>
     <string name="optionsMenu">USTAWIENIA</string>
     <string name="rulesMenu">ZASADY GRY</string>
     <string name="exitMenu">WYJŚCIE</string>
 
+    <!-- OptionsActivity -->
     <string name="range_label">Zakres</string>
-    <string name="range">Podaj zakres procentowy (0-100%)</string>
     <string name="mode">Wybierz tryb gry</string>
     <string name="individual">dla każdego inna liczba</string>
     <string name="common">dla wszystkich wspólna liczba</string>
+    <string name="range_label_description">Podaj dla +/- jakiego procenta maksimum przedziału mają być wyświetlane powiadomienia</string>
+    <string name="min_range_label">0%</string>
+    <string name="mid_range_label">50%</string>
+    <string name="max_range_label">100%</string>
+    <string name="result">Wybrany zakres: 50% </string>
+
+    <!-- AboutActivity -->
     <string name="rules_title">Zasady gry</string>
     <string name="rules">Rozgrywka polega na zgadywaniu liczby wylosowanej z podanego przedziału.
     Minimum przedziału nie powinno być mniejsze niż 1, natomiast maksimum - większe niż 10 000.
@@ -23,34 +32,42 @@
     tej wartosci,\n wówczas zobaczysz komunikat, czy podana przez Ciebie liczba jest mniejsza/większa od wylosowanej.\n\n
     \nGra przewiduje max. 4 graczy. Kolejność zgadywania jest losowa.\n\n
     Życzę przyjemnej gry :) !</string>
-    <string name="range_label_description">Podaj dla +/- jakiego procenta maksimum przedziału mają być wyświetlane powiadomienia</string>
-    <string name="min_range_label">0%</string>
-    <string name="mid_range_label">50%</string>
-    <string name="max_range_label">100%</string>
-    <string name="result">Wybrany zakres: 50% </string>
 
+    <!-- AGameActivity -->
     <string name="noOfPlayersTitle">Liczba graczy </string>
     <string name="onePlayer">jeden </string>
     <string name="twoPlayers">dwóch </string>
     <string name="threePlayers">trzech</string>
     <string name="fourPlayers">czterech </string>
     <string name="playersOkButtonText">Gotowe ! </string>
+
+    <!-- Dialog for getting nicks -->
     <string name="dialogNicksText">testowy </string>
     <string name="dialogNicksAdd">Dodaj </string>
     <string name="giveANickText">Podaj nick... </string>
 
+    <!-- BGameActivity -->
     <string name="minDesc">Co najmniej 1 </string>
     <string name="minTitle">Minimum </string>
-    <string name="maxDesc">Nie więcej niż 1 000 000 </string>
+    <string name="maxDesc">Nie więcej niż 10 000 </string>
     <string name="maxTitle">Maksimum </string>
     <string name="intervalTitle">Przedział losowania liczb </string>
-
     <string name="getNumberHint">Podaj liczbę</string>
-
     <string name="checkNumberButton">Sprawdź</string>
-
     <string name="startGame">Rozpocznij grę !</string>
 
+    <!-- ResultActivity -->
     <string name="results">Wyniki</string>
 
+    <!-- Toasts -->
+    <string name="nickRepetaedToast">Taki nick już istnieje!</string>
+    <string name="emptyNickToast">Nie można dodać pustego nicku!</string>
+    <string name="tooLowMinimumToast">Liczba musi być większa od 0!</string>
+    <string name="tooHighMaximumToast">Liczba musi być mniejsza od 10 000!</string>
+    <string name="wrongDifferenceToast">Maksimum nie może byc mniejsze niż minimum!</string>
+    <string name="tooSmallDifferenceToast">Przedział nie może być mniejszy niż 100!</string>
+    <string name="numberGuessedToast">Zgadłeś :) !</string>
+    <string name="numberTooSmallToast">Niestety, podana liczba jest mniejsza od wylosowanej!</string>
+    <string name="numberTooBigToast">Niestety, podana liczba jest większa od wylosowanej!</string>
+    <string name="numberWrongToast">Niestety, nie udało Ci się zgadnąć liczby !</string>
 </resources>

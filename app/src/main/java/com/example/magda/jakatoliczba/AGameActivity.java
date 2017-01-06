@@ -11,7 +11,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+
 import java.util.ArrayList;
+
+import static com.example.magda.jakatoliczba.MessagesManager.getToast;
 
 /**
  * Created by Magda on 18.11.2016.
@@ -63,9 +66,13 @@ public class AGameActivity extends AppCompatActivity implements RadioGroup.OnChe
                         //checking whether nick is repeated
                         for (int k = 0; k < listOfPlayers.size(); k++) {
                             if (tempPlayer.getNick().equals(listOfPlayers.get(k).getNick())) {
-                                Log.d(TAG, "niestety powtórzono nicka");
+                                MessagesManager.getToast(getApplicationContext(),1, getString(R.string.nickRepetaedToast)).show();
                                 nickIsRepeated = true;
                             }
+                        }
+                        if (tempPlayer.getNick().isEmpty()) {
+                            MessagesManager.getToast(getApplicationContext(),1, getString(R.string.emptyNickToast)).show();
+                            nickIsRepeated = true;
                         }
                         //if not we can add it to list of players
                         if (!nickIsRepeated) {

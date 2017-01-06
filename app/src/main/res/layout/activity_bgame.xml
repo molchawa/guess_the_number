@@ -61,7 +61,7 @@
         android:id="@+id/startPlayButton"
         android:layout_below="@+id/maxTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp" />
+        android:layout_marginTop="30dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -87,7 +87,18 @@
         android:layout_centerHorizontal="true"
         android:width="110dp"
         android:visibility="invisible"/>
-
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="numberPassword"
+        android:ems="10"
+        android:hint="@string/getNumberHint"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/getNumberPasswordEditText"
+        android:layout_marginTop="30dp"
+        android:layout_below="@+id/roundTextView"
+        android:width="110dp"
+        android:visibility="invisible" />
 
     <Button
         style="?android:attr/buttonStyleSmall"
@@ -99,5 +110,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:visibility="invisible" />
+
+
 
 </RelativeLayout>
