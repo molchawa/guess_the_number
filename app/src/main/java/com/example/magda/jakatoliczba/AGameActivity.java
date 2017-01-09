@@ -2,6 +2,7 @@ package com.example.magda.jakatoliczba;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -14,12 +15,12 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import static com.example.magda.jakatoliczba.MessagesManager.getToast;
 
 /**
  * Created by Magda on 18.11.2016.
  */
 public class AGameActivity extends AppCompatActivity implements RadioGroup.OnCheckedChangeListener {
+
 
     private final Context context = this;
     private int noOfPlayers = 2;
@@ -66,12 +67,12 @@ public class AGameActivity extends AppCompatActivity implements RadioGroup.OnChe
                         //checking whether nick is repeated
                         for (int k = 0; k < listOfPlayers.size(); k++) {
                             if (tempPlayer.getNick().equals(listOfPlayers.get(k).getNick())) {
-                                MessagesManager.getToast(getApplicationContext(),1, getString(R.string.nickRepetaedToast)).show();
+                                MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.nickRepetaedToast)).show();
                                 nickIsRepeated = true;
                             }
                         }
                         if (tempPlayer.getNick().isEmpty()) {
-                            MessagesManager.getToast(getApplicationContext(),1, getString(R.string.emptyNickToast)).show();
+                            MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.emptyNickToast)).show();
                             nickIsRepeated = true;
                         }
                         //if not we can add it to list of players
@@ -119,5 +120,34 @@ public class AGameActivity extends AppCompatActivity implements RadioGroup.OnChe
                 noOfPlayers = 4;
                 break;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+
+        //to ask whether user wants to exit the game or not
+        MessagesManager.getSimplyAlertDialog(getString(R.string.questionAboutEndingText),
+                getString(R.string.exitMenu), getString(R.string.yesText),
+                getString(R.string.cancellingText), this,
+                new DialogInterface.OnClickListener(){
+
+                    public static final int BUTTON_POSITIVE = -1;
+                    public static final int BUTTON_NEGATIVE =-2 ;
+
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch(i){
+                            case BUTTON_POSITIVE:
+                                Intent intent = new Intent(AGameActivity.this, MainActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                                break;
+                            case BUTTON_NEGATIVE:
+                                dialogInterface.dismiss();
+                                break;
+                        }
+                    }
+                }).show();
     }
 }

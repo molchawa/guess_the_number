@@ -46,4 +46,13 @@
 
     </TableLayout>
 
+    <Button
+        android:text="@string/exitToMenuText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="130dp"
+        android:id="@+id/exitToMainMenuButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
 </RelativeLayout>

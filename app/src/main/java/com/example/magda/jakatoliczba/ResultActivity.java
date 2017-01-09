@@ -1,10 +1,13 @@
 package com.example.magda.jakatoliczba;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -57,5 +60,46 @@ public class ResultActivity extends AppCompatActivity {
             row.addView(trials);
             result.addView(row, i + 1);
         }
+
+        Button exitToMainMenuButton=(Button) findViewById(R.id.exitToMainMenuButton);
+
+        exitToMainMenuButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(ResultActivity.this, MainActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                startActivity(intent);
+            }
+        });
     }
+
+    @Override
+    public void onBackPressed() {
+        //super.onBackPressed();
+
+        //to ask whether user wants to exit the game or not
+        MessagesManager.getSimplyAlertDialog(getString(R.string.questionAboutEndingText),
+                getString(R.string.exitMenu), getString(R.string.yesText),
+                getString(R.string.cancellingText), this,
+                new DialogInterface.OnClickListener(){
+
+                    public static final int BUTTON_POSITIVE = -1;
+                    public static final int BUTTON_NEGATIVE =-2 ;
+
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        switch(i){
+                            case BUTTON_POSITIVE:
+                                Intent intent = new Intent(ResultActivity.this, MainActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                                break;
+                            case BUTTON_NEGATIVE:
+                                dialogInterface.dismiss();
+                                break;
+                        }
+                    }
+                }).show();
+    }
+
 }

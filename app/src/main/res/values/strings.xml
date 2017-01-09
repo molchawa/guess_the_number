@@ -58,6 +58,7 @@
 
     <!-- ResultActivity -->
     <string name="results">Wyniki</string>
+    <string name="exitToMenuText">Wróć do menu</string>
 
     <!-- Toasts -->
     <string name="nickRepetaedToast">Taki nick już istnieje!</string>
@@ -70,4 +71,9 @@
     <string name="numberTooSmallToast">Niestety, podana liczba jest mniejsza od wylosowanej!</string>
     <string name="numberTooBigToast">Niestety, podana liczba jest większa od wylosowanej!</string>
     <string name="numberWrongToast">Niestety, nie udało Ci się zgadnąć liczby !</string>
+
+    <!-- Ending Game Dialog -->
+    <string name="cancellingText">Anuluj</string>
+    <string name="yesText">Tak</string>
+    <string name="questionAboutEndingText">Czy chcesz zakończyć grę?</string>
 </resources>
