@@ -45,7 +45,7 @@ public class BGameActivity extends AppCompatActivity {
         rangeValue = sharedOptionsPreferences.getInt("range", 50);
         mode = sharedOptionsPreferences.getInt("mode", 2);
         //difference to describe in which surround of number clues are being shown
-        difference = ((double) maximum) * (((double) rangeValue) / (double) 100);
+       // difference = ((double) maximum) * (((double) rangeValue) / (double) 100);
         Intent intent = getIntent();
         noOfPlayers = intent.getIntExtra("numberOfPlayers", 2);
         listOfPlayers = new ArrayList<Player>();
@@ -75,6 +75,8 @@ public class BGameActivity extends AppCompatActivity {
 
                 EditText maximumEditText = (EditText) findViewById(R.id.maxEditText);
                 maximum = Integer.parseInt(maximumEditText.getText().toString());
+                //difference to describe in which surround of number clues are being shown
+                difference = ((double) maximum) * (((double) rangeValue) / (double) 100);
                 if (maximum > 10000) {
                     MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.tooHighMaximumToast)).show();
                     editTextProblem = true;
