@@ -53,6 +53,7 @@
         android:layout_marginBottom="130dp"
         android:id="@+id/exitToMainMenuButton"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/colorPrimaryLight"/>
 
 </RelativeLayout>

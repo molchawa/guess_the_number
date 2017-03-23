@@ -1,7 +1,9 @@
 package com.example.magda.jakatoliczba;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -23,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //shared options preferences to keep rangeValue and mode, because it is the same for all activities
+        //shared options preferences to keep rangeValue and mode, because they are the same for all activities
         sharedOptionsPreferences = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
         rangeValue = sharedOptionsPreferences.getInt("range", 50);
         mode = sharedOptionsPreferences.getInt("mode", 2);

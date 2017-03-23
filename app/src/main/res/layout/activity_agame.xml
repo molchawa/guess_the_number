@@ -48,6 +48,7 @@
         android:text="@string/playersOkButtonText"
         android:id="@+id/playersOkButton"
         android:layout_below="@+id/radioGroupNoOfPlayers"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/colorPrimaryLight"/>
 
 </RelativeLayout>

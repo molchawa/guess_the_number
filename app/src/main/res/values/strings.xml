@@ -68,9 +68,12 @@
     <string name="wrongDifferenceToast">Maksimum nie może byc mniejsze niż minimum!</string>
     <string name="tooSmallDifferenceToast">Przedział nie może być mniejszy niż 100!</string>
     <string name="numberGuessedToast">Zgadłeś :) !</string>
+    <string name="numberSmallerThanMinimumToast">Niestety, podana liczba jest mniejsza od minimum przedziału losowania!</string>
     <string name="numberTooSmallToast">Niestety, podana liczba jest mniejsza od wylosowanej!</string>
     <string name="numberTooBigToast">Niestety, podana liczba jest większa od wylosowanej!</string>
+    <string name="numberBiggerThanMaximumToast">Niestety, podana liczba jest większa od maksimum przedziału losowania!</string>
     <string name="numberWrongToast">Niestety, nie udało Ci się zgadnąć liczby !</string>
+    <string name="emptyEditTextToast">Uzupełnij puste pole!</string>
 
     <!-- Ending Game Dialog -->
     <string name="cancellingText">Anuluj</string>

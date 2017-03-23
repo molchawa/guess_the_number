@@ -61,6 +61,7 @@ public class OptionsActivity extends AppCompatActivity implements OnSeekBarChang
     public void onStopTrackingTouch(SeekBar seekBar) {
         // TODO Auto-generated method stub
     }
+
     //pressing back means it is time to save shared Options preferences
     @Override
     public void onBackPressed() {

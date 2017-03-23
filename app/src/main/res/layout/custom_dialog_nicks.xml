@@ -30,7 +30,8 @@ android:layout_alignParentStart="true" />
     android:text="@string/dialogNicksAdd"
     android:layout_marginTop="5dp"
     android:layout_below="@+id/nickEditText"
-    android:layout_centerHorizontal="true"/>
+    android:layout_centerHorizontal="true"
+    android:backgroundTint="@color/colorPrimaryLight"/>
 
 
 

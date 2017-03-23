@@ -5,6 +5,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -45,7 +46,7 @@ public class BGameActivity extends AppCompatActivity {
         rangeValue = sharedOptionsPreferences.getInt("range", 50);
         mode = sharedOptionsPreferences.getInt("mode", 2);
         //difference to describe in which surround of number clues are being shown
-       // difference = ((double) maximum) * (((double) rangeValue) / (double) 100);
+        // difference = ((double) maximum) * (((double) rangeValue) / (double) 100);
         Intent intent = getIntent();
         noOfPlayers = intent.getIntExtra("numberOfPlayers", 2);
         listOfPlayers = new ArrayList<Player>();
@@ -66,30 +67,43 @@ public class BGameActivity extends AppCompatActivity {
 
                 //getting range from which the number will be generated
                 EditText minimumEditText = (EditText) findViewById(R.id.minEditText);
+
                 boolean editTextProblem = false;
-                minimum = Integer.parseInt(minimumEditText.getText().toString());
-                if (minimum < 0) {
-                    MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.tooLowMinimumToast)).show();
+
+                if (minimumEditText.getText().toString().isEmpty()) {
+                    MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.emptyEditTextToast)).show();
                     editTextProblem = true;
+                } else {
+                    minimum = Integer.parseInt(minimumEditText.getText().toString());
+                    if (minimum < 0) {
+                        MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.tooLowMinimumToast)).show();
+                        editTextProblem = true;
+                    }
                 }
 
                 EditText maximumEditText = (EditText) findViewById(R.id.maxEditText);
-                maximum = Integer.parseInt(maximumEditText.getText().toString());
-                //difference to describe in which surround of number clues are being shown
-                difference = ((double) maximum) * (((double) rangeValue) / (double) 100);
-                if (maximum > 10000) {
-                    MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.tooHighMaximumToast)).show();
-                    editTextProblem = true;
-                }
 
-                if (maximum <= minimum) {
-                    MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.wrongDifferenceToast)).show();
+                if (maximumEditText.getText().toString().isEmpty()) {
+                    MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.emptyEditTextToast)).show();
                     editTextProblem = true;
-                }
+                } else {
+                    maximum = Integer.parseInt(maximumEditText.getText().toString());
+                    //difference to describe in which surround of number clues are being shown
+                    difference = ((double) maximum) * (((double) rangeValue) / (double) 100);
+                    if (maximum > 10000) {
+                        MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.tooHighMaximumToast)).show();
+                        editTextProblem = true;
+                    }
 
-                if (maximum - minimum < 100) {
-                    MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.tooSmallDifferenceToast)).show();
-                    editTextProblem = true;
+                    if (maximum <= minimum) {
+                        MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.wrongDifferenceToast)).show();
+                        editTextProblem = true;
+                    }
+
+                    if (maximum - minimum < 100) {
+                        MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.tooSmallDifferenceToast)).show();
+                        editTextProblem = true;
+                    }
                 }
 
                 if (editTextProblem == false) {
@@ -97,10 +111,6 @@ public class BGameActivity extends AppCompatActivity {
                     listOfPlayers = sortingPlayers(listOfPlayers, noOfPlayers);
                     //generating a number to be guessed
                     numberRandomization(listOfPlayers, noOfPlayers, mode, minimum, maximum);
-
-                    for (int i = 0; i < noOfPlayers; i++) {
-                        Log.d(TAG, "Gracz " + (i + 1) + " " + listOfPlayers.get(i).getNumber());
-                    }
 
                     play(noOfPlayers, mode, listOfPlayers);
                 }
@@ -133,6 +143,7 @@ public class BGameActivity extends AppCompatActivity {
                 for (int i = 0; i < noOfPlayers; i++) {
                     Random generator = new Random();
                     list.get(i).setNumber(generator.nextInt((max - min) + 1) + min);
+
                 }
                 break;
             case 2:
@@ -141,6 +152,7 @@ public class BGameActivity extends AppCompatActivity {
                 int tempNumber = generator.nextInt((max - min) + 1) + min;
                 for (int i = 0; i < noOfPlayers; i++) {
                     list.get(i).setNumber(tempNumber);
+
                 }
                 break;
         }
@@ -171,38 +183,43 @@ public class BGameActivity extends AppCompatActivity {
         checkButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                list.get(currentPlayer).setTempNumber(Integer.parseInt(getNumberEditText.getText().toString()));
-                //if number is guessed a special parameter is incremented (this parameter is sth like counter of players, who guessed a number)
-                if (checkIsNumberCorrect(list.get(currentPlayer), currentRound)) {
-                    finish++;
-                }
-                //here is time to increment a current player
-                do {
-                    currentPlayer++;
+                if (getNumberEditText.getText().toString().isEmpty()) {
+                    MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.emptyEditTextToast)).show();
+                } else {
+                    list.get(currentPlayer).setTempNumber(Integer.parseInt(getNumberEditText.getText().toString()));
+                    //if number is guessed a special parameter is incremented (this parameter is sth like counter of players, who guessed a number)
+                    if (checkIsNumberCorrect(list.get(currentPlayer), currentRound)) {
+                        finish++;
+                    }
+                    //here is time to increment a current player
+                    do {
+                        currentPlayer++;
 
-                    //but if it is equal to amount of players we need to make it 0 again and increment a round counter
-                    if (currentPlayer == a) {
-                        currentRound++;
-                        currentPlayer = 0;
-                    }
-                    //if finish=a it means that everybody guessed their numbers
+                        //but if it is equal to amount of players we need to make it 0 again and increment a round counter
+                        if (currentPlayer == a) {
+                            currentRound++;
+                            currentPlayer = 0;
+                        }
+                        //if finish=a it means that everybody guessed their numbers
+                        if (finish == a) {
+                            break;
+                        }
+                        //current player should ommit players who have guessed their numbers (there is no need to show request for them again)
+                    } while (list.get(currentPlayer).isNumberIsGuessed());
+                    //if all players have guessed their numbers it is time to start new activity
                     if (finish == a) {
-                        break;
+                        Intent i = new Intent(BGameActivity.this, ResultActivity.class);
+                        i.putExtra("listOfPlayers", listOfPlayers);
+                        i.putExtra("numberOfPlayers", noOfPlayers);
+                        startActivity(i);
                     }
-                    //current player should ommit players who have guessed their numbers (there is no need to show request for them again)
-                } while (list.get(currentPlayer).isNumberIsGuessed());
-                //if all players have guessed their numbers it is time to start new activity
-                if (finish == a) {
-                    Intent i = new Intent(BGameActivity.this, ResultActivity.class);
-                    i.putExtra("listOfPlayers", listOfPlayers);
-                    i.putExtra("numberOfPlayers", noOfPlayers);
-                    startActivity(i);
+                    //if not - we have to change request
+                    if (finish < a) {
+                        roundTextView.setText("Runda: " + currentRound + " , gracz: " + listOfPlayers.get(currentPlayer).getNick());
+                        getNumberEditText.setText("");
+                    }
                 }
-                //if not - we have to change request
-                if (finish < a) {
-                    roundTextView.setText("Runda: " + currentRound + " , gracz: " + listOfPlayers.get(currentPlayer).getNick());
-                    getNumberEditText.setText("");
-                }
+
             }
         });
     }
@@ -211,13 +228,23 @@ public class BGameActivity extends AppCompatActivity {
         player.setNumberOfTrials(r);
         if (player.getNumber() == player.getTempNumber()) {
             player.setNumberIsGuessed(true);
+
+            Vibrator vib = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+            long[] pat = {250, 100, 250, 100, 250, 100};
+            vib.vibrate(pat, -1);
+
             MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.numberGuessedToast)).show();
+
             return true;
         } else {
-            if ((player.getTempNumber() >= (player.getNumber() - difference)) && (player.getTempNumber() < player.getNumber())) {
+            if (player.getTempNumber() < minimum) {
+                MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.numberSmallerThanMinimumToast)).show();
+            } else if ((player.getTempNumber() >= minimum) && (player.getTempNumber() >= (player.getNumber() - difference)) && (player.getTempNumber() < player.getNumber())) {
                 MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.numberTooSmallToast)).show();
-            } else if ((player.getTempNumber() <= (player.getNumber() + difference)) && (player.getTempNumber() > player.getNumber())) {
+            } else if ((player.getTempNumber() <= maximum) && (player.getTempNumber() <= (player.getNumber() + difference)) && (player.getTempNumber() > player.getNumber())) {
                 MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.numberTooBigToast)).show();
+            } else if (player.getTempNumber() > maximum) {
+                MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.numberBiggerThanMaximumToast)).show();
             } else {
                 MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.numberWrongToast)).show();
             }
@@ -233,14 +260,14 @@ public class BGameActivity extends AppCompatActivity {
         MessagesManager.getSimplyAlertDialog(getString(R.string.questionAboutEndingText),
                 getString(R.string.exitMenu), getString(R.string.yesText),
                 getString(R.string.cancellingText), this,
-                new DialogInterface.OnClickListener(){
+                new DialogInterface.OnClickListener() {
 
                     public static final int BUTTON_POSITIVE = -1;
-                    public static final int BUTTON_NEGATIVE =-2 ;
+                    public static final int BUTTON_NEGATIVE = -2;
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        switch(i){
+                        switch (i) {
                             case BUTTON_POSITIVE:
                                 Intent intent = new Intent(BGameActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

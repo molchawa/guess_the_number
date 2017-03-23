@@ -1,7 +1,7 @@
 package com.example.magda.jakatoliczba;
 
-import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+        import android.os.Bundle;
+        import android.support.v7.app.AppCompatActivity;
 
 /**
  * Created by Magda on 12.11.2016.
@@ -10,6 +10,6 @@ public class AboutActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_about);
-        //nothing interesting here, but the content is in layout resource- TO DO ! change game rules
+        //nothing interesting here, but the content is in layout resource
     }
 }

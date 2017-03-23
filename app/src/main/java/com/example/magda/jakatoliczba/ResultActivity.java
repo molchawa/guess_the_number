@@ -37,9 +37,7 @@ public class ResultActivity extends AppCompatActivity {
             Integer amount2 = player2.getNumberOfTrials();
             return amount1.compareTo(amount2);
         });
-        for (int i = 0; i < noOfPlayers; i++) {
-            Log.d(TAG, i + ". miejsce: " + listOfPlayers.get(i).getNick() + " " + listOfPlayers.get(i).getNumberOfTrials());
-        }
+
         //dynamically created table containing players and their scores
         TableLayout result = (TableLayout) findViewById(R.id.resultTable);
         for (int i = 0; i < noOfPlayers; i++) {
@@ -61,7 +59,7 @@ public class ResultActivity extends AppCompatActivity {
             result.addView(row, i + 1);
         }
 
-        Button exitToMainMenuButton=(Button) findViewById(R.id.exitToMainMenuButton);
+        Button exitToMainMenuButton = (Button) findViewById(R.id.exitToMainMenuButton);
 
         exitToMainMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -81,14 +79,14 @@ public class ResultActivity extends AppCompatActivity {
         MessagesManager.getSimplyAlertDialog(getString(R.string.questionAboutEndingText),
                 getString(R.string.exitMenu), getString(R.string.yesText),
                 getString(R.string.cancellingText), this,
-                new DialogInterface.OnClickListener(){
+                new DialogInterface.OnClickListener() {
 
                     public static final int BUTTON_POSITIVE = -1;
-                    public static final int BUTTON_NEGATIVE =-2 ;
+                    public static final int BUTTON_NEGATIVE = -2;
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        switch(i){
+                        switch (i) {
                             case BUTTON_POSITIVE:
                                 Intent intent = new Intent(ResultActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

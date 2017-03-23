@@ -33,7 +33,6 @@ public class AGameActivity extends AppCompatActivity implements RadioGroup.OnChe
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agame);
-
         currentPlayer = 1;//sth like counter for players
 
         radioGroupNoOfPlayers = (RadioGroup) findViewById(R.id.radioGroupNoOfPlayers);
@@ -86,6 +85,7 @@ public class AGameActivity extends AppCompatActivity implements RadioGroup.OnChe
                             dialogButtonNicksAdd.setText("Zakończ");
                         }
 
+
                         //if we gather all nicks we can close  the dialog window and start new activity
                         if (currentPlayer > noOfPlayers) {
                             dialogForNicks.dismiss();
@@ -130,14 +130,14 @@ public class AGameActivity extends AppCompatActivity implements RadioGroup.OnChe
         MessagesManager.getSimplyAlertDialog(getString(R.string.questionAboutEndingText),
                 getString(R.string.exitMenu), getString(R.string.yesText),
                 getString(R.string.cancellingText), this,
-                new DialogInterface.OnClickListener(){
+                new DialogInterface.OnClickListener() {
 
                     public static final int BUTTON_POSITIVE = -1;
-                    public static final int BUTTON_NEGATIVE =-2 ;
+                    public static final int BUTTON_NEGATIVE = -2;
 
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-                        switch(i){
+                        switch (i) {
                             case BUTTON_POSITIVE:
                                 Intent intent = new Intent(AGameActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);

@@ -15,43 +15,14 @@ import android.widget.Toast;
 
 public class MessagesManager {
 
-    public static final int SNACK_BAR_TIME_LVL_SHORT = 0;
-    public static final int SNACK_BAR_TIME_LVL_LONG = 1;
-    public static final int SNACK_BAR_TIME_LVL_INDEFINITE = 2;
-
-    @NonNull
-    public static Snackbar getSimplySnackBar(View rootLayout, int levelTime, String message) {
-        if (levelTime == 0) { //krótki czas trwania
-            return Snackbar.make(rootLayout, message, Snackbar.LENGTH_SHORT);
-        } else if (levelTime == 1) { //długi czas trwania
-            return Snackbar.make(rootLayout, message, Snackbar.LENGTH_LONG);
-        } else { //niezdefiniowany czas trwania
-            return Snackbar.make(rootLayout, message, Snackbar.LENGTH_INDEFINITE);
-        }
-    }
-
     public static Toast getToast(Context context, int levelTime, String message) {
-        if (levelTime == 0) { //krótki czas wyświetlania
+        if (levelTime == 0) { //short time of displaying
             return Toast.makeText(context, message, Toast.LENGTH_SHORT);
-        } else { //długi czas wyświetlania
+        } else { //long time of displaying
             return Toast.makeText(context, message, Toast.LENGTH_LONG);
         }
     }
 
-    public static Snackbar getSnackBar(View rootView, int levelTime, String message,
-                                       String buttonText, Context context, View.OnClickListener onClickListener) {
-        Snackbar tmpSnackbar;
-        if (levelTime == 0) { //krótki czas trwania
-            tmpSnackbar = Snackbar.make(rootView, message, Snackbar.LENGTH_SHORT);
-        } else if (levelTime == 1) { //długi czas trwania
-            tmpSnackbar = Snackbar.make(rootView, message, Snackbar.LENGTH_LONG);
-        } else { //niezdefiniowany czas trwania
-            tmpSnackbar = Snackbar.make(rootView, message, Snackbar.LENGTH_INDEFINITE);
-        }
-        tmpSnackbar.setAction(buttonText, onClickListener);
-        tmpSnackbar.setActionTextColor(ContextCompat.getColor(context, R.color.colorAccent));
-        return tmpSnackbar;
-    }
 
     public static AppCompatDialog getSimplyAlertDialog(String message, String title, String okButton,
                                                        String deniedButton, Context context,
@@ -69,23 +40,5 @@ public class MessagesManager {
         return tmpDialog;
     }
 
-    public static AppCompatDialog getCustomLayoutAlertDialog(int layout,String title, Context context) {
-        AppCompatDialog dialog = new AppCompatDialog(context);
-        dialog.setContentView(layout);
-        dialog.setCancelable(false);
-        dialog.setCanceledOnTouchOutside(false);
-        dialog.setTitle(title);
-        return dialog;
-    }
-
-    public static ProgressDialog getSimplyProgressDialog(Context context, String message) {
-        ProgressDialog progressDialog = new ProgressDialog(context);
-        progressDialog.setIndeterminate(true);
-        progressDialog.setMessage(message);
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setCancelable(false);
-        progressDialog.setCanceledOnTouchOutside(false);
-        return progressDialog;
-    }
 
 }
