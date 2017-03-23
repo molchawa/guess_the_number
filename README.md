@@ -11,7 +11,11 @@ Gra jest przeznaczona dla urządzeń z wersją Androida min. 5.0 Lollipop (API L
 
 ### Demo
 
-(screeny)
+![Image](https://github.com/molchawa/guess_the_number/blob/master/screens/screen1.png)
+![Image](https://github.com/molchawa/guess_the_number/blob/master/screens/screen2.png)
+![Image](https://github.com/molchawa/guess_the_number/blob/master/screens/screen3.png)
+![Image](https://github.com/molchawa/guess_the_number/blob/master/screens/screen4.png)
+![Image](https://github.com/molchawa/guess_the_number/blob/master/screens/screen5.png)
 
 ## Struktura projektu
 
