@@ -1,6 +1,6 @@
 # guess_the_number - Zgadnij liczbę! - gra na Androida
 Mobile app repository.
-Gra na platformę Android dla max. 4 użytkowników, która polega na zadaniu przedziału, z którego zostanie wylosowana liczba (lub liczby). Nastepnie zadaniem graczy jest z zgadnięcie, jaka liczba zostałw wylosowana. Gra zapewnia dwa tryby: dla każdego losowana jest taka sama liczba lub dla każdego losowana jest inna liczba.
+Gra na platformę Android dla max. 4 użytkowników, która polega na zadaniu przedziału, z którego zostanie wylosowana liczba (lub liczby). Następnie zadaniem graczy jest z zgadnięcie, jaka liczba została wylosowana. Gra zapewnia dwa tryby: dla każdego losowana jest taka sama liczba lub dla każdego losowana jest inna liczba.
 ## Jak zagrać?
 
 W celu uruchomienia gry należy wygenerować .apk, następnie zainstalować i postępować zgodnie z instrukcjami. 
@@ -19,11 +19,11 @@ Gra jest przeznaczona dla urządzeń z wersją Androida min. 5.0 Lollipop (API L
 
 ## Struktura projektu
 
-Projekt tworzony w środowisku Android Studio. Składa się z 8 klas (pisanych w języku Java), przy czym 6 z nich stanowi osobne Activity. Wszystkie klasy dziedziczą po klasie AppCompatActivity, która to klasa pozwala na wsparcie wtecz (dzięki niej aplikacja będzie działała oraz wyglądała w miarę podobnie nawet na starszych wersjach systemu Android). Ponad to plik AndroidManifest.xml, który zawiera nazwy wszystkich Activity, ustala warunki uruchomieniowe, a także potrzebne permissions (jak dla zastosowanych w projekcie wibracji).
+Projekt tworzony w środowisku Android Studio. Składa się z 8 klas (pisanych w języku Java), przy czym 6 z nich stanowi osobne Activity. Wszystkie klasy dziedziczą po klasie AppCompatActivity, która to klasa pozwala na wsparcie wstecz (dzięki niej aplikacja będzie działała oraz wyglądała w miarę podobnie nawet na starszych wersjach systemu Android). Ponad to plik AndroidManifest.xml, który zawiera nazwy wszystkich Activity, ustala warunki uruchomieniowe, a także potrzebne permissions (jak dla zastosowanych w projekcie wibracji).
 
 `<uses-permission android:name="android.permission.VIBRATE"/>`
 
-Na projekt składają się także pliki .xml zawierające layout poszczególnych Activity oraz customowego dialog boxa. Ponad to w osobnych plikach źródłowych są zawarte wszystkie teskty (poza tworzonymi dynamicznie), a także kolory czy wymiary.
+Na projekt składają się także pliki .xml zawierające layout poszczególnych Activity oraz customowego dialog boxa. Ponad to w osobnych plikach źródłowych są zawarte wszystkie teksty (poza tworzonymi dynamicznie), a także kolory czy wymiary.
  
 ### Opis klas
 
@@ -46,15 +46,15 @@ Gracze zapisywani są w strukturze danych (ArrayList) w postaci obiektów klasy 
 
 #### BGameActivity
 
-Właściwa część gry. Najpierw użytkownik podaje przedział losowania. Nie może być on mniejszy niż 100 (z założeń gry). Następnie losowana jest kolejność użytkwoników (by kolejność wprowadzania nicku nie miała znaczenia). Natsępnie losowana jest liczba lub liczby (w zależności od trybu gry). Użytkownik prowadzi grę podając liczby i sprawdzając, czy są liczbami wylosowanymi. Jeśli podana przez gracza liczba leży w otoczeniu wylosowanej liczby (otoczenie określone przez zakres z wybierany w *Ustawieniach*: -z/+z % maksimum przedziału) użytkownik jest informowany, czy podaa przez niego liczba jest mniejsza/większa od wylosowanej. Gdy gracz zgadnie liczbę, kończy swoją rozgrywkę, a informuje go o tym stosowny napis (Toast) oraz wibracje.
+Właściwa część gry. Najpierw użytkownik podaje przedział losowania. Nie może być on mniejszy niż 100 (z założeń gry). Następnie losowana jest kolejność użytkowników (by kolejność wprowadzania nicku nie miała znaczenia). Następnie losowana jest liczba lub liczby (w zależności od trybu gry). Użytkownik prowadzi grę podając liczby i sprawdzając, czy są liczbami wylosowanymi. Jeśli podana przez gracza liczba leży w otoczeniu wylosowanej liczby (otoczenie określone przez zakres z wybierany w *Ustawieniach*: -z/+z % maksimum przedziału) użytkownik jest informowany, czy podaa przez niego liczba jest mniejsza/większa od wylosowanej. Gdy gracz zgadnie liczbę, kończy swoją rozgrywkę, a informuje go o tym stosowny napis (Toast) oraz wibracje.
 
 #### ResultActivity
 
-Ekran wyświetlający wyniki (gracz oraz liczba prób do momentu trafienia w wylosowaną liczbę) w postaci tabeli budowanej dunamicznie (w zależnośco od ilości graczy).
+Ekran wyświetlający wyniki (gracz oraz liczba prób do momentu trafienia w wylosowaną liczbę) w postaci tabeli budowanej dynamicznie (w zależności od ilości graczy).
 
 #### Player
 
-Klasa symulująca gracza. Zawiera takie pola prywatne jak: nick, liczba prób,  liczba (wylosowana liczba), tymczasowa liczba (podawana przez użytkownika), zmienna warunkowa określająca czy liczba została odgadnieta. Ponad to klasa zawiera funkcje dostępowe (*settery* oraz *gettery*).
+Klasa symulująca gracza. Zawiera takie pola prywatne jak: nick, liczba prób,  liczba (wylosowana liczba), tymczasowa liczba (podawana przez użytkownika), zmienna warunkowa określająca czy liczba została odgadnięta. Ponad to klasa zawiera funkcje dostępowe (*settery* oraz *gettery*).
 
 #### MessagesManager
 
@@ -64,7 +64,7 @@ Klasa, która zbiera w sobie funkcje odpowiedzialne za kontakt z użytkownikiem 
 
 #### Metoda sortująca graczy
 
-Gracze ustawiani są w wylosowanej kolejności. KOrzysta z klasy *Random*
+Gracze ustawiani są w wylosowanej kolejności. Korzysta z klasy *Random*
 
 ```
     public ArrayList<Player> sortingPlayers(ArrayList<Player> list, int amountOfPlayers) {
@@ -86,7 +86,7 @@ Gracze ustawiani są w wylosowanej kolejności. KOrzysta z klasy *Random*
 ```
 #### Metoda losująca liczbę (lub liczby)
 
-Losowanie liczbyw  w zależności od trybu.
+Losowanie liczby w zależności od trybu.
 
 ```
     public void numberRandomization(ArrayList<Player> list, int noOfPlayers, int m, int min, int max) {
@@ -113,7 +113,7 @@ Losowanie liczbyw  w zależności od trybu.
 ```
 #### Przesyłanie listy graczy pomiędzy Activity
 
-Odbywa się na zasadzie tworzenia obiektu klasy Intent i przesyłania go do innego Activity. By móc korzytsać z tej możliwości należało klasę Player
+Odbywa się na zasadzie tworzenia obiektu klasy Intent i przesyłania go do innego Activity. By móc korzystać z tej możliwości należało klasę Player
 ustalić jako *Serializable*. 
 
 ```
