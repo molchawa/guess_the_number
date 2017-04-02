@@ -7,6 +7,7 @@
     <string name="playMenu">NOWA GRA</string>
     <string name="optionsMenu">USTAWIENIA</string>
     <string name="rulesMenu">ZASADY GRY</string>
+    <string name="highscoresMenu">GIGHSCORES</string>
     <string name="exitMenu">WYJŚCIE</string>
 
     <!-- OptionsActivity -->
@@ -59,6 +60,9 @@
     <!-- ResultActivity -->
     <string name="results">Wyniki</string>
     <string name="exitToMenuText">Wróć do menu</string>
+
+    <!-- HighscoresActivity -->
+    <string name="highscores">Highscores</string>
 
     <!-- Toasts -->
     <string name="nickRepetaedToast">Taki nick już istnieje!</string>

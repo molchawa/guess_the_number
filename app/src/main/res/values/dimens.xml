@@ -1,5 +1,41 @@
 <resources>
-    <!-- Default screen margins, per the Android Design guidelines. -->
+
+    <!-- General -->
+    <dimen name="main_padding">15dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+
+    <!-- MainActivity -->
+    <dimen name="main_activity_new_game_button_top_margin">250dp</dimen>
+    <dimen name="main_activity_new_game_text_view_top_margin">75dp</dimen>
+
+    <!-- OptionsActivity -->
+    <dimen name="options_activity_text_view_top_margin">15dp</dimen>
+    <dimen name="options_activity_seek_bar_top_margin">15dp</dimen>
+    <dimen name="options_activity_seek_bar_result_top_padding">20dp</dimen>
+    <dimen name="options_activity_radio_group_margin">10dp</dimen>
+
+    <!-- AboutActivity -->
+    <dimen name="about_activity_text_view_top_margin">20dp</dimen>
+
+    <!-- AGameActivity -->
+    <dimen name="a_game_activity_text_view_top_margin">15dp</dimen>
+    <dimen name="a_game_activity_radio_button_margin">10dp</dimen>
+
+    <!-- BGameActivity -->
+    <dimen name="b_game_activity_edit_text_range_width">165dp</dimen>
+    <dimen name="b_game_activity_button_margin">30dp</dimen>
+    <dimen name="b_game_activity_button_text_view_width">100dp</dimen>
+    <dimen name="b_game_activity_edit_text_put_number_top_margin">30dp</dimen>
+    <dimen name="b_game_activity_edit_text_put_number_width">150dp</dimen>
+
+    <!-- ResultActivity -->
+    <dimen name="result_activity_text_view_top_margin">30dp</dimen>
+    <dimen name="result_activity_table_layout_top_margin">5dp</dimen>
+    <dimen name="result_activity_table_layout_padding">15dp</dimen>
+    <dimen name="result_activity_button_bottom_margin">130dp</dimen>
+    <dimen name="result_activity_column_width">1dp</dimen>
+
+    <!-- Dialog  -->
+    <dimen name="custom_dialog_button_top_margin">5dp</dimen>
 </resources>

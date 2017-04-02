@@ -4,7 +4,7 @@
 android:orientation="vertical"
 android:layout_width="fill_parent"
 android:layout_height="fill_parent"
-android:padding="15dp">
+android:padding="@dimen/main_padding">
 
 
 <TextView
@@ -28,7 +28,7 @@ android:layout_alignParentStart="true" />
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:text="@string/dialogNicksAdd"
-    android:layout_marginTop="5dp"
+    android:layout_marginTop="@dimen/custom_dialog_button_top_margin"
     android:layout_below="@+id/nickEditText"
     android:layout_centerHorizontal="true"
     android:backgroundTint="@color/colorPrimaryLight"/>

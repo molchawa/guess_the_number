@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/result_activity_text_view_top_margin"
-        android:text="@string/results"
+        android:text="@string/highscores"
         android:textAlignment="center"
         android:textAppearance="?android:attr/textAppearanceLarge" />
 
@@ -44,14 +44,5 @@
 
     </TableLayout>
 
-    <Button
-        android:text="@string/exitToMenuText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/result_activity_button_bottom_margin"
-        android:id="@+id/exitToMainMenuButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:backgroundTint="@color/colorPrimaryLight"/>
 
 </RelativeLayout>

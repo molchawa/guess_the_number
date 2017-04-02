@@ -2,9 +2,10 @@ package com.example.magda.jakatoliczba;
 
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -15,13 +16,15 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Collections;
 
+
+
 /**
  * Created by Madzia on 2016-12-05.
  */
 public class ResultActivity extends AppCompatActivity {
     private int noOfPlayers;
     private ArrayList<Player> listOfPlayers;
-    private static final String TAG = "ResultActivityLogi";
+
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,6 +94,7 @@ public class ResultActivity extends AppCompatActivity {
                                 Intent intent = new Intent(ResultActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                                 startActivity(intent);
+
                                 break;
                             case BUTTON_NEGATIVE:
                                 dialogInterface.dismiss();

@@ -22,7 +22,7 @@
         <activity android:name=".AGameActivity"></activity>
         <activity android:name=".BGameActivity"></activity>
         <activity android:name=".ResultActivity"></activity>
-
+        <activity android:name=".HighscoresActivity"></activity>
 
     </application>
 </manifest>

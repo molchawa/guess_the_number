@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp">
+    android:padding="@dimen/main_padding">
 
     <TextView
         android:layout_width="wrap_content"
@@ -21,7 +21,7 @@
         android:inputType="numberDecimal"
         android:digits="1234567890"
         android:layout_below="@+id/intervalTextView"
-        android:width="165dp"/>
+        android:width="@dimen/b_game_activity_edit_text_range_width"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -42,7 +42,7 @@
         android:inputType="numberDecimal"
         android:digits="1234567890"
         android:layout_alignParentRight="true"
-        android:width="165dp"/>
+        android:width="@dimen/b_game_activity_edit_text_range_width"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -61,7 +61,7 @@
         android:id="@+id/startPlayButton"
         android:layout_below="@+id/maxTextView"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/b_game_activity_button_margin"
         android:backgroundTint="@color/colorPrimaryLight"/>
 
     <TextView
@@ -71,7 +71,7 @@
         android:text="testowy"
         android:id="@+id/roundTextView"
         android:layout_below="@+id/startPlayButton"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="@dimen/b_game_activity_button_text_view_width"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:visibility="invisible"/>
@@ -82,9 +82,9 @@
         android:inputType="numberDecimal"
         android:ems="10"
         android:hint="@string/getNumberHint"
-        android:width="150dp"
+        android:width="@dimen/b_game_activity_edit_text_put_number_width"
         android:id="@+id/getNumberEditText"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/b_game_activity_edit_text_put_number_top_margin"
         android:layout_below="@+id/roundTextView"
         android:layout_centerHorizontal="true"
         android:visibility="invisible"/>
@@ -96,9 +96,9 @@
         android:hint="@string/getNumberHint"
         android:layout_centerHorizontal="true"
         android:id="@+id/getNumberPasswordEditText"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/b_game_activity_edit_text_put_number_top_margin"
         android:layout_below="@+id/roundTextView"
-        android:width="150dp"
+        android:width="@dimen/b_game_activity_edit_text_put_number_width"
         android:visibility="invisible" />
 
     <Button
@@ -109,7 +109,7 @@
         android:id="@+id/checkButton"
         android:layout_below="@+id/getNumberEditText"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="@dimen/b_game_activity_button_margin"
         android:visibility="invisible"
         android:backgroundTint="@color/colorPrimaryLight"/>
 

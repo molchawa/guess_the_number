@@ -9,68 +9,55 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.example.magda.jakatoliczba.MainActivity">
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/playMenu"
-        android:id="@+id/playButton"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentLeft="true"
-        android:layout_above="@+id/optionsButton"
-        android:layout_alignParentRight="true"
-        android:backgroundTint="@color/colorPrimaryLight"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/optionsMenu"
-        android:id="@+id/optionsButton"
-        android:layout_above="@+id/rulesButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/playButton"
-        android:layout_alignEnd="@+id/playButton"
-        android:backgroundTint="@color/colorPrimaryLight"/>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/rulesMenu"
-        android:id="@+id/rulesButton"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_marginBottom="91dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:backgroundTint="@color/colorPrimaryLight"/>
-
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
+        android:layout_gravity="center_horizontal"
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/hello_first_inscription"
         android:id="@+id/helloTextView"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginTop="49dp"
-        android:layout_alignRight="@+id/playButton"
-        android:layout_alignEnd="@+id/playButton" />
+        android:layout_marginTop="@dimen/main_activity_new_game_text_view_top_margin"
+        android:textAlignment="center"/>
 
     <Button
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/playMenu"
+        android:id="@+id/playButton"
+        android:backgroundTint="@color/colorPrimaryLight"
+        android:layout_centerInParent="true" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/optionsMenu"
+        android:id="@+id/optionsButton"
+        android:layout_below="@id/playButton"
+        android:backgroundTint="@color/colorPrimaryLight"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/rulesMenu"
+        android:id="@+id/rulesButton"
+        android:layout_below="@id/optionsButton"
+        android:backgroundTint="@color/colorPrimaryLight"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/highscoresMenu"
+        android:id="@+id/highscoresButton"
+        android:layout_below="@id/rulesButton"
+        android:backgroundTint="@color/colorPrimaryLight"/>
+
+
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/exitMenu"
         android:id="@+id/exitButton"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="42dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignRight="@+id/rulesButton"
-        android:layout_alignEnd="@+id/rulesButton"
+        android:layout_below="@id/highscoresButton"
         android:backgroundTint="@color/colorPrimaryLight"/>
 
 

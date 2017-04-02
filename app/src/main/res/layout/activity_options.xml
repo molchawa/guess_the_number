@@ -3,7 +3,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="15dp">
+    android:padding="@dimen/main_padding">
 
 
     <TextView
@@ -16,7 +16,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/options_activity_text_view_top_margin"
         android:layout_below="@+id/rangeTextView"
         android:textAppearance="?android:attr/textAppearanceSmall"
         android:text="@string/range_label_description"
@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/rangeDescriptionTextView"
         android:id="@+id/rangeSeekBar"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="@dimen/options_activity_seek_bar_top_margin"
         android:max="100" />
     <TextView
         android:layout_width="wrap_content"
@@ -58,7 +58,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/minRangeTextView"
-        android:paddingTop="20dp"
+        android:paddingTop="@dimen/options_activity_seek_bar_result_top_padding"
         android:text="@string/result" />
 
     <TextView
@@ -69,13 +69,13 @@
         android:textAppearance="?android:attr/textAppearanceLarge"
         android:text="@string/mode"
         android:id="@+id/modeTextView"
-        android:layout_marginTop="15dp"/>
+        android:layout_marginTop="@dimen/options_activity_text_view_top_margin"/>
 
     <RadioGroup
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/modeTextView"
-        android:layout_margin="10dp"
+        android:layout_margin="@dimen/options_activity_radio_group_margin"
         android:orientation="vertical"
         android:id="@+id/radioGroupModes">
         <RadioButton android:id="@+id/radio_individual"
