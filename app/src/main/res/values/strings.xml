@@ -7,7 +7,7 @@
     <string name="playMenu">NOWA GRA</string>
     <string name="optionsMenu">USTAWIENIA</string>
     <string name="rulesMenu">ZASADY GRY</string>
-    <string name="highscoresMenu">GIGHSCORES</string>
+    <string name="highscoresMenu">HIGHSCORES</string>
     <string name="exitMenu">WYJŚCIE</string>
 
     <!-- OptionsActivity -->

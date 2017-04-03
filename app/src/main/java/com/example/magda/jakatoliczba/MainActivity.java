@@ -11,7 +11,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Button playButton, optionsButton, rulesButton, exitButton;
+    private Button playButton, optionsButton, rulesButton, exitButton,highscoresButton;
     private int rangeValue;
     private int mode;
     public static final String MY_PREFERENCES = "MyPrefs";
@@ -34,6 +34,7 @@ public class MainActivity extends AppCompatActivity {
         optionsButton = (Button) findViewById(R.id.optionsButton);
         rulesButton = (Button) findViewById(R.id.rulesButton);
         exitButton = (Button) findViewById(R.id.exitButton);
+        highscoresButton = (Button) findViewById(R.id.highscoresButton);
 
         //starting various activities (in main activity - first screen-there is only a menu
         playButton.setOnClickListener(new View.OnClickListener() {
@@ -58,6 +59,15 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(i);
             }
         });
+
+        highscoresButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, HighscoresActivity.class);
+                startActivity(i);
+            }
+        });
+
         exitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -65,6 +75,8 @@ public class MainActivity extends AppCompatActivity {
                 System.exit(0);
             }
         });
+
+
     }
 }
 

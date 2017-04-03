@@ -150,6 +150,7 @@ public class BGameActivity extends AppCompatActivity {
                 //each player has his own, generated number
                 Random generator = new Random();
                 int tempNumber = generator.nextInt((max - min) + 1) + min;
+                Log.d(TAG,"liczba: "+tempNumber);
                 for (int i = 0; i < noOfPlayers; i++) {
                     list.get(i).setNumber(tempNumber);
 

@@ -13,6 +13,10 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
 
@@ -24,7 +28,9 @@ import java.util.Collections;
 public class ResultActivity extends AppCompatActivity {
     private int noOfPlayers;
     private ArrayList<Player> listOfPlayers;
-
+    public static final String MY_PREFERENCES_2 = "MyPrefs2";
+    private SharedPreferences sharedHighscoresPreferences;
+    private ArrayList<Player> listOfHighscores;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -62,11 +68,54 @@ public class ResultActivity extends AppCompatActivity {
             result.addView(row, i + 1);
         }
 
+        sharedHighscoresPreferences = getSharedPreferences(MY_PREFERENCES_2, MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedHighscoresPreferences.getString("highscores", null);
+        if(json==null){
+           listOfHighscores=new ArrayList<Player>();
+        }
+        else {
+            Type type = new TypeToken<ArrayList<Player>>() {
+            }.getType();
+            listOfHighscores = gson.fromJson(json, type);
+        }
+
+        for(int i=0;i<noOfPlayers;i++){
+
+             if(listOfHighscores.size()<10){
+                listOfHighscores.add(listOfPlayers.get(i));
+                Collections.sort(listOfHighscores, (player1, player2) -> {
+                    Integer amount1 = player1.getNumberOfTrials();
+                    Integer amount2 = player2.getNumberOfTrials();
+                    return amount1.compareTo(amount2);
+                });
+            }
+            else if(listOfHighscores.size()>=10){
+                if(listOfPlayers.get(i).getNumberOfTrials()<=listOfHighscores.get(listOfHighscores.size()-1).getNumberOfTrials()){
+                    listOfHighscores.remove(listOfHighscores.size()-1);
+                    listOfHighscores.add(listOfPlayers.get(i));
+                    Collections.sort(listOfHighscores, (player1, player2) -> {
+                        Integer amount1 = player1.getNumberOfTrials();
+                        Integer amount2 = player2.getNumberOfTrials();
+                        return amount1.compareTo(amount2);
+                    });
+                }
+            }
+
+        }
         Button exitToMainMenuButton = (Button) findViewById(R.id.exitToMainMenuButton);
 
         exitToMainMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                sharedHighscoresPreferences = getSharedPreferences(MY_PREFERENCES_2, MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedHighscoresPreferences.edit();
+                Gson gson = new Gson();
+
+                String json = gson.toJson(listOfHighscores);
+
+                editor.putString("highscores", json);
+                editor.commit();
                 Intent intent = new Intent(ResultActivity.this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                 startActivity(intent);

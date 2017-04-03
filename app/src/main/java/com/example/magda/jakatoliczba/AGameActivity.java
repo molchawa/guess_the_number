@@ -30,6 +30,7 @@ public class AGameActivity extends AppCompatActivity implements RadioGroup.OnChe
     private int currentPlayer;
     private static final String TAG = "AGameActivity";
 
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agame);
