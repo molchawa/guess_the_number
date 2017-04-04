@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,6 +14,10 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 
@@ -29,7 +34,9 @@ public class AGameActivity extends AppCompatActivity implements RadioGroup.OnChe
     private ArrayList<Player> listOfPlayers;
     private int currentPlayer;
     private static final String TAG = "AGameActivity";
-
+    public static final String MY_PREFERENCES = "com.example.magda.jakatoliczba.PREFERENCES";
+    private SharedPreferences sharedHighscoresPreferences;
+    private ArrayList<Player> listOfHighscores;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +46,17 @@ public class AGameActivity extends AppCompatActivity implements RadioGroup.OnChe
         radioGroupNoOfPlayers = (RadioGroup) findViewById(R.id.radioGroupNoOfPlayers);
         radioGroupNoOfPlayers.setOnCheckedChangeListener(this);//to choose from 1 to 4 players; this function is overridden above
 
+        sharedHighscoresPreferences = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
+        Gson gson = new Gson();
+        String json = sharedHighscoresPreferences.getString("highscores", null);
+        if(json==null){
+            listOfHighscores=new ArrayList<Player>();
+        }
+        else {
+            Type type = new TypeToken<ArrayList<Player>>() {
+            }.getType();
+            listOfHighscores = gson.fromJson(json, type);
+        }
         //confirming after choosing amount of players
         playersOkButton = (Button) findViewById(R.id.playersOkButton);
         playersOkButton.setOnClickListener(new View.OnClickListener() {
@@ -65,12 +83,13 @@ public class AGameActivity extends AppCompatActivity implements RadioGroup.OnChe
                         tempPlayer.setNick(editTextToGetNick.getText().toString());
 
                         //checking whether nick is repeated
-                        for (int k = 0; k < listOfPlayers.size(); k++) {
-                            if (tempPlayer.getNick().equals(listOfPlayers.get(k).getNick())) {
+                        for (int k = 0; k < listOfHighscores.size(); k++) {
+                            if (tempPlayer.getNick().equals(listOfHighscores.get(k).getNick())) {
                                 MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.nickRepetaedToast)).show();
                                 nickIsRepeated = true;
                             }
                         }
+
                         if (tempPlayer.getNick().isEmpty()) {
                             MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.emptyNickToast)).show();
                             nickIsRepeated = true;
@@ -78,6 +97,7 @@ public class AGameActivity extends AppCompatActivity implements RadioGroup.OnChe
                         //if not we can add it to list of players
                         if (!nickIsRepeated) {
                             listOfPlayers.add(tempPlayer);
+                            listOfHighscores.add(tempPlayer);
                             currentPlayer++;
                         }
 

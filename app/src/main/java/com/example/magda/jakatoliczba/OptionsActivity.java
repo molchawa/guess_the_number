@@ -17,7 +17,7 @@ public class OptionsActivity extends AppCompatActivity implements OnSeekBarChang
     private TextView result;
     private RadioGroup radioGroupModes;
     private int mode;
-    public static final String MY_PREFERENCES = "MyPrefs";
+    public static final String MY_PREFERENCES = "com.example.magda.jakatoliczba.PREFERENCES";
     private SharedPreferences sharedOptionsPreferences;
 
     public void onCreate(Bundle savedInstanceState) {

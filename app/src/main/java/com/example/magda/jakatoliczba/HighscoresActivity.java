@@ -22,14 +22,14 @@ import java.util.ArrayList;
 
 public class HighscoresActivity extends AppCompatActivity {
 
-    public static final String MY_PREFERENCES_2 = "MyPrefs2";
+    public static final String MY_PREFERENCES= "com.example.magda.jakatoliczba.PREFERENCES";
     private SharedPreferences sharedHighscoresPreferences;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_highscores);
 
-        sharedHighscoresPreferences = getSharedPreferences(MY_PREFERENCES_2, MODE_PRIVATE);
+        sharedHighscoresPreferences = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedHighscoresPreferences.getString("highscores", null);
         if(json!=null){

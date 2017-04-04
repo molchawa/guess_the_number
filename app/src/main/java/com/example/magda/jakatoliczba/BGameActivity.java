@@ -30,7 +30,7 @@ public class BGameActivity extends AppCompatActivity {
     private double difference;
     private ArrayList<Player> listOfPlayers;
     private Button startPlayButton;
-    public static final String MY_PREFERENCES = "MyPrefs";
+    public static final String MY_PREFERENCES = "com.example.magda.jakatoliczba.PREFERENCES";
     private static final String TAG = "BGameActivityLogi";
     private SharedPreferences sharedOptionsPreferences;
     //variables to control getting numbers from users

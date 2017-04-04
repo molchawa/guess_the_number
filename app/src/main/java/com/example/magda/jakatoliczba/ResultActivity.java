@@ -28,7 +28,7 @@ import java.util.Collections;
 public class ResultActivity extends AppCompatActivity {
     private int noOfPlayers;
     private ArrayList<Player> listOfPlayers;
-    public static final String MY_PREFERENCES_2 = "MyPrefs2";
+    public static final String MY_PREFERENCES = "com.example.magda.jakatoliczba.PREFERENCES";
     private SharedPreferences sharedHighscoresPreferences;
     private ArrayList<Player> listOfHighscores;
 
@@ -68,7 +68,7 @@ public class ResultActivity extends AppCompatActivity {
             result.addView(row, i + 1);
         }
 
-        sharedHighscoresPreferences = getSharedPreferences(MY_PREFERENCES_2, MODE_PRIVATE);
+        sharedHighscoresPreferences = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedHighscoresPreferences.getString("highscores", null);
         if(json==null){
@@ -80,35 +80,14 @@ public class ResultActivity extends AppCompatActivity {
             listOfHighscores = gson.fromJson(json, type);
         }
 
-        for(int i=0;i<noOfPlayers;i++){
+        highscores(noOfPlayers,listOfHighscores,listOfPlayers);
 
-             if(listOfHighscores.size()<10){
-                listOfHighscores.add(listOfPlayers.get(i));
-                Collections.sort(listOfHighscores, (player1, player2) -> {
-                    Integer amount1 = player1.getNumberOfTrials();
-                    Integer amount2 = player2.getNumberOfTrials();
-                    return amount1.compareTo(amount2);
-                });
-            }
-            else if(listOfHighscores.size()>=10){
-                if(listOfPlayers.get(i).getNumberOfTrials()<=listOfHighscores.get(listOfHighscores.size()-1).getNumberOfTrials()){
-                    listOfHighscores.remove(listOfHighscores.size()-1);
-                    listOfHighscores.add(listOfPlayers.get(i));
-                    Collections.sort(listOfHighscores, (player1, player2) -> {
-                        Integer amount1 = player1.getNumberOfTrials();
-                        Integer amount2 = player2.getNumberOfTrials();
-                        return amount1.compareTo(amount2);
-                    });
-                }
-            }
-
-        }
         Button exitToMainMenuButton = (Button) findViewById(R.id.exitToMainMenuButton);
 
         exitToMainMenuButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sharedHighscoresPreferences = getSharedPreferences(MY_PREFERENCES_2, MODE_PRIVATE);
+                sharedHighscoresPreferences = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
                 SharedPreferences.Editor editor = sharedHighscoresPreferences.edit();
                 Gson gson = new Gson();
 
@@ -123,6 +102,33 @@ public class ResultActivity extends AppCompatActivity {
         });
     }
 
+    public ArrayList<Player> highscores(int number,ArrayList<Player> listh,ArrayList<Player> listp){
+        for(int i=0;i<number;i++){
+
+            if(listh.size()<10){
+                listh.add(listp.get(i));
+                Collections.sort(listh, (player1, player2) -> {
+                    Integer amount1 = player1.getNumberOfTrials();
+                    Integer amount2 = player2.getNumberOfTrials();
+                    return amount1.compareTo(amount2);
+                });
+
+            }
+            else if(listh.size()>=10){
+                if(listp.get(i).getNumberOfTrials()<=listh.get(listh.size()-1).getNumberOfTrials()){
+                    listh.remove(listh.size()-1);
+                    listh.add(listp.get(i));
+                    Collections.sort(listh, (player1, player2) -> {
+                        Integer amount1 = player1.getNumberOfTrials();
+                        Integer amount2 = player2.getNumberOfTrials();
+                        return amount1.compareTo(amount2);
+                    });
+                }
+            }
+
+        }
+        return listh;
+    };
     @Override
     public void onBackPressed() {
         //super.onBackPressed();

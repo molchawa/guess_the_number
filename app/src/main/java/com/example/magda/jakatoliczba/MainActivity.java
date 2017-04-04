@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private Button playButton, optionsButton, rulesButton, exitButton,highscoresButton;
     private int rangeValue;
     private int mode;
-    public static final String MY_PREFERENCES = "MyPrefs";
+    public static final String MY_PREFERENCES = "com.example.magda.jakatoliczba.PREFERENCES";
     private SharedPreferences sharedOptionsPreferences;
 
     /**
