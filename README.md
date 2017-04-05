@@ -52,6 +52,10 @@ Właściwa część gry. Najpierw użytkownik podaje przedział losowania. Nie m
 
 Ekran wyświetlający wyniki (gracz oraz liczba prób do momentu trafienia w wylosowaną liczbę) w postaci tabeli budowanej dynamicznie (w zależności od ilości graczy).
 
+#### HighscoresActivity
+
+Ekran wyświetlający 10 najlepszych wyników.
+
 #### Player
 
 Klasa symulująca gracza. Zawiera takie pola prywatne jak: nick, liczba prób,  liczba (wylosowana liczba), tymczasowa liczba (podawana przez użytkownika), zmienna warunkowa określająca czy liczba została odgadnięta. Ponad to klasa zawiera funkcje dostępowe (*settery* oraz *gettery*).
