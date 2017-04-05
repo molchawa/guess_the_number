@@ -13,13 +13,13 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.annimon.stream.Stream;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Collections;
-
 
 
 /**
@@ -68,20 +68,20 @@ public class ResultActivity extends AppCompatActivity {
             result.addView(row, i + 1);
         }
 
+
         sharedHighscoresPreferences = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedHighscoresPreferences.getString("highscores", null);
-        if(json==null){
-           listOfHighscores=new ArrayList<Player>();
-        }
-        else {
+        if (json == null) {
+            listOfHighscores = new ArrayList<Player>();
+        } else {
             Type type = new TypeToken<ArrayList<Player>>() {
             }.getType();
             listOfHighscores = gson.fromJson(json, type);
         }
 
-        highscores(noOfPlayers,listOfHighscores,listOfPlayers);
-
+        //highscores(noOfPlayers,listOfHighscores,listOfPlayers);
+        Stream.of(listOfPlayers).forEach(player -> highscores(player, listOfHighscores, listOfPlayers));
         Button exitToMainMenuButton = (Button) findViewById(R.id.exitToMainMenuButton);
 
         exitToMainMenuButton.setOnClickListener(new View.OnClickListener() {
@@ -102,33 +102,34 @@ public class ResultActivity extends AppCompatActivity {
         });
     }
 
-    public ArrayList<Player> highscores(int number,ArrayList<Player> listh,ArrayList<Player> listp){
-        for(int i=0;i<number;i++){
 
-            if(listh.size()<10){
-                listh.add(listp.get(i));
+    public ArrayList<Player> highscores(Player player, ArrayList<Player> listh, ArrayList<Player> listp) {
+        if (listh.size() < 10) {
+            listh.add(player);
+            Collections.sort(listh, (player1, player2) -> {
+                Integer amount1 = player1.getNumberOfTrials();
+                Integer amount2 = player2.getNumberOfTrials();
+                return amount1.compareTo(amount2);
+            });
+
+        } else if (listh.size() >= 10) {
+            if (player.getNumberOfTrials() <= listh.get(listh.size() - 1).getNumberOfTrials()) {
+                listh.remove(listh.size() - 1);
+                listh.add(player);
                 Collections.sort(listh, (player1, player2) -> {
                     Integer amount1 = player1.getNumberOfTrials();
                     Integer amount2 = player2.getNumberOfTrials();
                     return amount1.compareTo(amount2);
                 });
-
             }
-            else if(listh.size()>=10){
-                if(listp.get(i).getNumberOfTrials()<=listh.get(listh.size()-1).getNumberOfTrials()){
-                    listh.remove(listh.size()-1);
-                    listh.add(listp.get(i));
-                    Collections.sort(listh, (player1, player2) -> {
-                        Integer amount1 = player1.getNumberOfTrials();
-                        Integer amount2 = player2.getNumberOfTrials();
-                        return amount1.compareTo(amount2);
-                    });
-                }
-            }
-
         }
+
+
         return listh;
+
+
     };
+
     @Override
     public void onBackPressed() {
         //super.onBackPressed();

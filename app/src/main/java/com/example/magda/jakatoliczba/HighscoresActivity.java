@@ -4,8 +4,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
-import android.widget.RadioGroup;
-import android.widget.SeekBar;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -22,7 +20,7 @@ import java.util.ArrayList;
 
 public class HighscoresActivity extends AppCompatActivity {
 
-    public static final String MY_PREFERENCES= "com.example.magda.jakatoliczba.PREFERENCES";
+    public static final String MY_PREFERENCES = "com.example.magda.jakatoliczba.PREFERENCES";
     private SharedPreferences sharedHighscoresPreferences;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -32,11 +30,11 @@ public class HighscoresActivity extends AppCompatActivity {
         sharedHighscoresPreferences = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedHighscoresPreferences.getString("highscores", null);
-        if(json!=null){
+        if (json != null) {
             Type type = new TypeToken<ArrayList<Player>>() {}.getType();
             ArrayList<Player> listOfHighscores = gson.fromJson(json, type);
 
-            int noOfPlayers=listOfHighscores.size();
+            int noOfPlayers = listOfHighscores.size();
 
             TableLayout result = (TableLayout) findViewById(R.id.resultTable);
 
@@ -61,9 +59,6 @@ public class HighscoresActivity extends AppCompatActivity {
         }
 
     }
-
-
-
 
 
 }

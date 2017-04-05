@@ -14,7 +14,10 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import com.annimon.stream.Stream;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Random;
 
 /**
@@ -108,7 +111,7 @@ public class BGameActivity extends AppCompatActivity {
 
                 if (editTextProblem == false) {
                     //sorting list of players in generated order
-                    listOfPlayers = sortingPlayers(listOfPlayers, noOfPlayers);
+                    Collections.shuffle(listOfPlayers);
                     //generating a number to be guessed
                     numberRandomization(listOfPlayers, noOfPlayers, mode, minimum, maximum);
 
@@ -119,42 +122,19 @@ public class BGameActivity extends AppCompatActivity {
         });
     }
 
-    public ArrayList<Player> sortingPlayers(ArrayList<Player> list, int amountOfPlayers) {
-        ArrayList<Player> templistOfPlayers = new ArrayList<Player>();
-        ArrayList<Integer> numbersForOrder = new ArrayList<Integer>();
-        //generating new order
-        Random generator = new Random();
-        for (int i = 0; i < amountOfPlayers; i++) {
-            numbersForOrder.add(i);
-        }
-        //sorting list of players
-        for (int i = 0; i < amountOfPlayers; i++) {
-            int order = generator.nextInt(numbersForOrder.size());
-            templistOfPlayers.add(i, list.get(numbersForOrder.get(order)));
-            numbersForOrder.remove(order);
-        }
-        return templistOfPlayers;
-    }
 
     public void numberRandomization(ArrayList<Player> list, int noOfPlayers, int m, int min, int max) {
         switch (m) {
             case 1:
                 //there is one number for all players
-                for (int i = 0; i < noOfPlayers; i++) {
-                    Random generator = new Random();
-                    list.get(i).setNumber(generator.nextInt((max - min) + 1) + min);
-
-                }
+                Random generator = new Random();
+                Stream.of(listOfPlayers).forEach(player -> player.setNumber(generator.nextInt((max - min) + 1) + min));
                 break;
             case 2:
                 //each player has his own, generated number
-                Random generator = new Random();
-                int tempNumber = generator.nextInt((max - min) + 1) + min;
-                Log.d(TAG,"liczba: "+tempNumber);
-                for (int i = 0; i < noOfPlayers; i++) {
-                    list.get(i).setNumber(tempNumber);
-
-                }
+                Random generator2 = new Random();
+                int tempNumber = generator2.nextInt((max - min) + 1) + min;
+                Stream.of(listOfPlayers).forEach(player -> player.setNumber(tempNumber));
                 break;
         }
     }

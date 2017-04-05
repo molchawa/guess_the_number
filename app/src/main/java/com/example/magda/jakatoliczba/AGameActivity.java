@@ -14,6 +14,7 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 import android.widget.TextView;
 
+import com.annimon.stream.Stream;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -49,10 +50,10 @@ public class AGameActivity extends AppCompatActivity implements RadioGroup.OnChe
         sharedHighscoresPreferences = getSharedPreferences(MY_PREFERENCES, MODE_PRIVATE);
         Gson gson = new Gson();
         String json = sharedHighscoresPreferences.getString("highscores", null);
-        if(json==null){
-            listOfHighscores=new ArrayList<Player>();
-        }
-        else {
+
+        if (json == null) {
+            listOfHighscores = new ArrayList<Player>();
+        } else {
             Type type = new TypeToken<ArrayList<Player>>() {
             }.getType();
             listOfHighscores = gson.fromJson(json, type);
@@ -82,12 +83,9 @@ public class AGameActivity extends AppCompatActivity implements RadioGroup.OnChe
                         boolean nickIsRepeated = false;
                         tempPlayer.setNick(editTextToGetNick.getText().toString());
 
-                        //checking whether nick is repeated
-                        for (int k = 0; k < listOfHighscores.size(); k++) {
-                            if (tempPlayer.getNick().equals(listOfHighscores.get(k).getNick())) {
-                                MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.nickRepetaedToast)).show();
-                                nickIsRepeated = true;
-                            }
+                        if (Stream.of(listOfHighscores).anyMatch(player -> player.getNick().equals(tempPlayer.getNick()))) {
+                            MessagesManager.getToast(getApplicationContext(), 1, getString(R.string.nickRepetaedToast)).show();
+                            nickIsRepeated = true;
                         }
 
                         if (tempPlayer.getNick().isEmpty()) {
@@ -120,6 +118,7 @@ public class AGameActivity extends AppCompatActivity implements RadioGroup.OnChe
                         textForNicks.setText("Nick " + currentPlayer + ".z graczy");
                         editTextToGetNick.setText("");
                     }
+
                 });
             }
         });
